@@ -75,13 +75,10 @@ export default {
             inlineSources: !production,
         }),
         alias({
-            entries: [
-                {
-                    fint: '~',
-                    replacement: path.resolve(__dirname, 'src/'),
-                }
-            ]
-        }),
+			entries: [
+				{ find: '~', replacement: path.resolve(__dirname, 'src/') }
+			]
+		}),
 
         // In dev mode, call `npm run start` once
         // the bundle has been generated

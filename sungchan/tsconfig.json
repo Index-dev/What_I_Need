@@ -5,8 +5,8 @@
     "target": "es5",
     "module": "ESNext",
     "lib": ["ES2015", "ES2016", "ES2017", "ES2018", "ES2019", "ES2020", "DOM"],
-    // "declaration": true,
-    // "outDir": "./public/build",
+    "declaration": true,
+    "outDir": "./public/build",
 
     /* Strict Type-Checking Options */
     "strict": true,

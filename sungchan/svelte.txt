@@ -10,8 +10,8 @@
 		"target": "es5",
 		"module": "ESNext",
 		"lib": ["ES2015", "ES2016", "ES2017", "ES2018", "ES2019", "ES2020", "DOM"],
-		// "declaration": true,
-		// "outDir": "./public/build",
+		"declaration": true,
+		"outDir": "./public/build",
 
 		/* Strict Type-Checking Options */
 		"strict": true,
@@ -104,3 +104,31 @@ eslint, prettier 설정
         "editor.formatOnSave": true,
         "editor.defaultFormatter": "svelte.svelte-vscode"
     },
+	
+	
+	
+	
+라우터 사용하기
+ 1. npm install -D svelte-spa-router
+ 2. <script>
+	import Router from 'svelte-spa-router';
+	import Home from './Home.svelte';
+	import About from './About.svelte';
+	import Blog from './Blog.svelte';
+
+	const routes = {
+		'/': Home,
+		'/about': About,
+		'/blog': Blog,
+	};
+	</script>
+
+	<div>
+		<Router {routes} />
+	</div>
+ 3. <script>
+	import { link } from 'svelte-spa-router';
+	import active from 'svelte-spa-router/active';
+	</script>
+	<a href="/blog" use:link use:active>Blog</a>
+		
