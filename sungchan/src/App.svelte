@@ -5,14 +5,14 @@
 }
 
 main {
-    border: 8px solid blueviolet;
+    background-color: #ad896f;
 }
 </style>
 
 <script>
 import Router from 'svelte-spa-router';
 import Header from '~/components/Header.svelte';
-import Home from '~/components/Home.svelte';
+import Home from '~/pages/Home.svelte';
 
 const routes = {
     '/': Home,

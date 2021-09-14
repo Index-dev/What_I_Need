@@ -132,3 +132,15 @@ eslint, prettier 설정
 	</script>
 	<a href="/blog" use:link use:active>Blog</a>
 		
+		
+		
+		
+		
+replace를 이용한 env처리
+ 1. npm install -D @rollup/plugin-replace
+ 2. rollup.config.js 수정
+	plugin 내부에
+	 replace({
+		preventAssignment: true,
+		'process.env.test': JSON.stringify('myTest'),
+	}),

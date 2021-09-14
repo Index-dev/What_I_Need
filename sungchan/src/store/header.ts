@@ -1,10 +1,18 @@
 import { writable } from 'svelte/store';
 
-const _backgroundColor = writable('#fff');
+const _backgroundColorStyle = writable('');
+const _colorStyle = writable('');
 
-export const backgroundColor = {
-    ..._backgroundColor,
-    change: (color: string): void => {
-        _backgroundColor.set(color);
+export const backgroundColorStyle = {
+    ..._backgroundColorStyle,
+    change: (style: string): void => {
+        _backgroundColorStyle.set(style);
+    },
+};
+
+export const colorStyle = {
+    ..._colorStyle,
+    change: (style: string): void => {
+        _colorStyle.set(style);
     },
 };

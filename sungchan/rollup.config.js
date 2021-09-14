@@ -9,6 +9,7 @@ import css from 'rollup-plugin-css-only';
 import path from 'path';
 import alias from '@rollup/plugin-alias';
 import strip from '@rollup/plugin-strip';
+import replace from '@rollup/plugin-replace';
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -55,6 +56,11 @@ export default {
                 // enable run-time checks when not in production
                 dev: !production,
             },
+        }),
+        replace({
+            preventAssignment: true,
+            'process.env.searchColor': JSON.stringify('#703A56'),
+            'process.env.cardBoardColor': JSON.stringify('#3E5F5F'),
         }),
         // we'll extract any component CSS out into
         // a separate file - better for performance
