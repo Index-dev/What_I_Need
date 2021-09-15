@@ -27,7 +27,7 @@
     & > .back {
         width: MIN(17.2em, calc(5.2em + 11vw));
         height: MIN(25.8em, calc(7.8em + 16.5vw));
-        padding: 10px;
+        padding: MIN(10px, calc(2px + 1vw));
         background-color: #fff;
         position: absolute;
         transition-duration: 1s;
@@ -61,7 +61,7 @@ export let card;
 
 <div
     class="card"
-    style="transform: translate({card.translateX}px, {card.translateY}px) rotate({card.rotate}deg); animation-duration: {card.duration}s">
+    style="transform: translate({card.translateX}, {card.translateY}) rotate({card.rotate}deg); animation-duration: {card.duration}s">
     {#if card.type === 'card'}
         <div class="front">
             <img src={card.imagePath} alt="lion" />

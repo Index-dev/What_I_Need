@@ -31,6 +31,7 @@
     margin: 0;
     color: #fff;
     font-family: 'Courgette', cursive;
+    font-size: MIN(2.4em, calc(1em + 2vw));
 
     :global(&.card-board-style) {
         color: $card-board-color;

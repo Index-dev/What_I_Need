@@ -25,12 +25,12 @@
     color: #fff;
     padding: 0;
     margin: 0;
-    font-size: 4.3em;
+    font-size: MIN(4.3em, calc(1.9em + 2.2vw));
     font-style: oblique;
 }
 
 .searchText {
-    width: 50%;
+    width: MIN(30.4em, calc(14.4em + 20.2vw));
     height: 38px;
     border-radius: 6px;
     box-shadow: 1px 1px rgba(0, 0, 0, 0.2) inset, -1px -1px rgba(0, 0, 0, 0.2) inset;
