@@ -9,7 +9,7 @@
     background-color: $search-color;
     flex-wrap: wrap;
     gap: 32px;
-    padding: 14px 0;
+    padding: MIN(82px, calc(34px + 2.2vw)) 0;
 }
 
 .card-board {
@@ -19,6 +19,7 @@
     grid-template-columns: 1fr 1fr 1fr;
     padding: MIN(40px, calc(6px + 2vw));
     grid-gap: MIN(20px, calc(3px + 1vw));
+    min-height: 100vh;
 }
 
 .title {
@@ -41,12 +42,14 @@
 </style>
 
 <script>
-import { onDestroy, onMount } from 'svelte';
-import { backgroundColorStyle } from '~/store/header';
+import { onDestroy, onMount, tick } from 'svelte';
+import { backgroundColorStyle, colorStyle } from '~/store/header';
 import Card from '~/components/Card.svelte';
-import { cardList } from '~/store/home';
+import { filterCardList } from '~/store/card';
 
 let cardBoardEl;
+let searchTextEl;
+let searchText = '';
 
 // 헤더 배경 색깔 선택
 const getBackgroundColorStyle = () => {
@@ -57,26 +60,39 @@ const getBackgroundColorStyle = () => {
     } else {
         backgroundColorStyle.change('card-board-style');
     }
+
+    colorStyle.change('other-style');
 };
 
 onMount(() => {
     getBackgroundColorStyle();
     window.addEventListener('scroll', getBackgroundColorStyle);
+
+    tick();
+    searchTextEl.focus();
 });
 
 onDestroy(() => {
     window.removeEventListener('scroll', getBackgroundColorStyle);
 });
+
+// 카드 리스트 입력된 값으로 필터하기
+$: searchText, filterCardList.filter(searchText);
 </script>
 
 <div class="base-width">
     <div class="search">
         <h1 class="title">select a card ...</h1>
-        <input class="searchText" type="text" placeholder="검색어를 입력해주세요." />
+        <input
+            class="searchText"
+            type="text"
+            placeholder="검색어를 입력해주세요."
+            bind:this={searchTextEl}
+            bind:value={searchText} />
     </div>
     <div class="card-board" bind:this={cardBoardEl}>
-        {#each $cardList as card (card.id)}
-            <Card {card} />
+        {#each $filterCardList as card, index (card.id)}
+            <Card {card} {index} />
         {/each}
     </div>
 </div>
