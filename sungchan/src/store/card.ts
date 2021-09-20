@@ -1,10 +1,41 @@
-import { writable } from 'svelte/store';
+import { get, writable } from 'svelte/store';
 import shortid from 'shortid';
 
 const encrypt = () => shortid.generate();
 
 // 빈 카드 인덱스
 const emptyList = [2, 4, 7];
+
+interface Icard {
+    id: string;
+    type: string;
+    title: string;
+    description: string;
+    imagePath: string;
+    translateX: number;
+    translateY: number;
+    rotate: number;
+    duration: number;
+    iconList: Iicon[];
+}
+
+interface Iicon {
+    id: string;
+    title: string;
+    imagePath: string;
+    infoList: Iinfo[];
+}
+
+interface Iinfo {
+    title: string;
+    contentList: Icontent[];
+}
+
+interface Icontent {
+    type: string;
+    title: string;
+    content: string;
+}
 
 // 디자인 리스트
 export const designList = [
@@ -69,18 +100,54 @@ export const cardList = [
                         contentList: [
                             {
                                 type: 'text',
-                                title: '이름',
+                                title: '이름1',
+                                content: '리액트 (React)',
+                            },
+                            {
+                                type: 'text',
+                                title: '이름2',
+                                content: '리액트 (React)',
+                            },
+                            {
+                                type: 'text',
+                                title: '이름3',
+                                content: '리액트 (React)',
+                            },
+                            {
+                                type: 'text',
+                                title: '이름4',
+                                content: '리액트 (React)',
+                            },
+                            {
+                                type: 'text',
+                                title: '이름5',
+                                content: '리액트 (React)',
+                            },
+                            {
+                                type: 'text',
+                                title: '이름6',
+                                content: '리액트 (React)',
+                            },
+                            {
+                                type: 'text',
+                                title: '이름7',
+                                content: '리액트 (React)',
+                            },
+                            {
+                                type: 'text',
+                                title: '이름8',
                                 content: '리액트 (React)',
                             },
                         ],
                     },
                     {
-                        title: '관련 홈페이지',
+                        title: '관련 사이트',
                         contentList: [
                             {
                                 type: 'link',
-                                title: '초기 세팅하기',
-                                content: 'https://zerocho...',
+                                title: '초기 세팅',
+                                content:
+                                    'https://zerchoaskhdasbd/qwehqjks/ASDq123/ajbdjk123/asmdbjk2@@#!/jabndjk123/@askdk',
                             },
                         ],
                     },
@@ -96,17 +163,52 @@ export const cardList = [
                         contentList: [
                             {
                                 type: 'text',
-                                title: '이름',
-                                content: '뷰 (Vue)',
+                                title: '이름1',
+                                content: '리액트 (React)',
+                            },
+                            {
+                                type: 'text',
+                                title: '이름2',
+                                content: '리액트 (React)',
+                            },
+                            {
+                                type: 'text',
+                                title: '이름3',
+                                content: '리액트 (React)',
+                            },
+                            {
+                                type: 'text',
+                                title: '이름4',
+                                content: '리액트 (React)',
+                            },
+                            {
+                                type: 'text',
+                                title: '이름5',
+                                content: '리액트 (React)',
+                            },
+                            {
+                                type: 'text',
+                                title: '이름6',
+                                content: '리액트 (React)',
+                            },
+                            {
+                                type: 'text',
+                                title: '이름7',
+                                content: '리액트 (React)',
+                            },
+                            {
+                                type: 'text',
+                                title: '이름8',
+                                content: '리액트 (React)',
                             },
                         ],
                     },
                     {
-                        title: '관련 홈페이지',
+                        title: '관련 사이트',
                         contentList: [
                             {
                                 type: 'link',
-                                title: '초기 세팅하기',
+                                title: '초기 세팅',
                                 content: 'https://zerocho...',
                             },
                         ],
@@ -129,11 +231,11 @@ export const cardList = [
                         ],
                     },
                     {
-                        title: '관련 홈페이지',
+                        title: '관련 사이트',
                         contentList: [
                             {
                                 type: 'link',
-                                title: '초기 세팅하기',
+                                title: '초기 세팅',
                                 content: 'https://zerocho...',
                             },
                         ],
@@ -182,6 +284,74 @@ export const cardList = [
                                 type: 'text',
                                 title: '이름',
                                 content: '비핸스 (Behance)',
+                            },
+                        ],
+                    },
+                ],
+            },
+            {
+                id: encrypt(),
+                title: 'Awards',
+                imagePath: '/images/lion.png',
+                infoList: [
+                    {
+                        title: '기본 정보',
+                        contentList: [
+                            {
+                                type: 'text',
+                                title: '이름',
+                                content: '어워즈 (Awards)',
+                            },
+                        ],
+                    },
+                ],
+            },
+            {
+                id: encrypt(),
+                title: 'Awards',
+                imagePath: '/images/lion.png',
+                infoList: [
+                    {
+                        title: '기본 정보',
+                        contentList: [
+                            {
+                                type: 'text',
+                                title: '이름',
+                                content: '어워즈 (Awards)',
+                            },
+                        ],
+                    },
+                ],
+            },
+            {
+                id: encrypt(),
+                title: 'Awards',
+                imagePath: '/images/lion.png',
+                infoList: [
+                    {
+                        title: '기본 정보',
+                        contentList: [
+                            {
+                                type: 'text',
+                                title: '이름',
+                                content: '어워즈 (Awards)',
+                            },
+                        ],
+                    },
+                ],
+            },
+            {
+                id: encrypt(),
+                title: 'Awards',
+                imagePath: '/images/lion.png',
+                infoList: [
+                    {
+                        title: '기본 정보',
+                        contentList: [
+                            {
+                                type: 'text',
+                                title: '이름',
+                                content: '어워즈 (Awards)',
                             },
                         ],
                     },
@@ -469,5 +639,85 @@ export const cardId = {
     ..._cardId,
     change: (id: string): void => {
         _cardId.set(id);
+    },
+    changeIndex: (index: number): void => {
+        const findCard = cardList.find((card, cardIndex) => cardIndex === index);
+        findCard && _cardId.set(findCard.id);
+    },
+    getCard: (): Icard | undefined => {
+        const findCard = cardList.find((card) => card.id === get(_cardId));
+        return findCard;
+    },
+};
+
+const _cardWheel = writable({
+    up: false,
+    down: false,
+});
+
+export const cardWheel = {
+    ..._cardWheel,
+    init: (): void => {
+        const initWheel = {
+            up: false,
+            down: false,
+        };
+
+        _cardWheel.set(initWheel);
+    },
+    changeUp: (status: boolean): void => {
+        const currentWheel = get(_cardWheel);
+        currentWheel.up = status;
+
+        _cardWheel.set(currentWheel);
+    },
+    changeDown: (status: boolean): void => {
+        const currentWheel = get(_cardWheel);
+        currentWheel.down = status;
+
+        _cardWheel.set(currentWheel);
+    },
+};
+
+const _iconId = writable('');
+
+export const iconId = {
+    ..._iconId,
+    change: (id: string): void => {
+        _iconId.set(id);
+    },
+    changeIndex: (index: number): void => {
+        const findCard = cardList.find((card) => card.id === get(cardId));
+        const findIcon = findCard && findCard.iconList.find((icon, iconIndex) => iconIndex === index);
+        findIcon && _iconId.set(findIcon.id);
+    },
+};
+
+const _iconWheel = writable({
+    up: false,
+    down: false,
+});
+
+export const iconWheel = {
+    ..._iconWheel,
+    init: (): void => {
+        const initWheel = {
+            up: false,
+            down: false,
+        };
+
+        _iconWheel.set(initWheel);
+    },
+    changeUp: (status: boolean): void => {
+        const currentWheel = get(_iconWheel);
+        currentWheel.up = status;
+
+        _iconWheel.set(currentWheel);
+    },
+    changeDown: (status: boolean): void => {
+        const currentWheel = get(_iconWheel);
+        currentWheel.down = status;
+
+        _iconWheel.set(currentWheel);
     },
 };

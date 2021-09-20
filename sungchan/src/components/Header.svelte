@@ -14,6 +14,8 @@
     background-color: $search-color;
     box-shadow: 0 2px darken($search-color, 5%);
     transition-duration: 0.6s;
+    display: flex;
+    justify-content: space-between;
 
     :global(&.search-style) {
         background-color: $search-color;
@@ -52,11 +54,12 @@
 
 <script>
 import { push } from 'svelte-spa-router';
-
 import { backgroundColorStyle, colorStyle } from '~/store/header';
+import { cardId, iconId } from '~/store/card';
 
 let headerEl;
-let titleEl;
+let mainTitleEl;
+let subTitleEl;
 
 $: backgroundColorStyle,
     (() => {
@@ -73,23 +76,39 @@ $: backgroundColorStyle,
 
 $: colorStyle,
     (() => {
-        if (titleEl) {
-            titleEl.classList.remove('card-board-style');
-            titleEl.classList.remove('other-style');
+        if (mainTitleEl) {
+            mainTitleEl.classList.remove('card-board-style');
+            mainTitleEl.classList.remove('other-style');
 
             if ($colorStyle) {
-                titleEl.classList.add($colorStyle);
+                mainTitleEl.classList.add($colorStyle);
+            }
+        }
+
+        if (subTitleEl) {
+            subTitleEl.classList.remove('card-board-style');
+            subTitleEl.classList.remove('other-style');
+
+            if ($colorStyle) {
+                subTitleEl.classList.add($colorStyle);
             }
         }
     })();
 
-const onClickTitle = () => {
+const onClickMainTitle = () => {
     location.href = '/';
+};
+
+const onClickSubTitle = () => {
+    push('/cardList');
 };
 </script>
 
 <div class="base-width">
     <header class="header" bind:this={headerEl}>
-        <h1 class="title" bind:this={titleEl} on:click={onClickTitle}>D.Collection.</h1>
+        <h1 class="main-title title" bind:this={mainTitleEl} on:click={onClickMainTitle}>D.Collection.</h1>
+        {#if $iconId}
+            <h1 class="sub-title title" bind:this={subTitleEl} on:click={onClickSubTitle}>{cardId.getCard().title}</h1>
+        {/if}
     </header>
 </div>

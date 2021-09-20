@@ -16,7 +16,6 @@
     height: MIN(25.8em, calc(7.8em + 16.5vw));
     font-size: 12px;
     animation-timing-function: cubic-bezier(0.16, 0.68, 0.24, 1);
-    cursor: pointer;
 
     :global(&.animation) {
         animation-name: cardAnimation;
@@ -123,8 +122,11 @@ const onClickCard = () => {
 <div
     class="card"
     bind:this={cardEl}
-    on:click={onClickCard}
-    style="transform: translate({card.translateX}, {card.translateY}) rotate({card.rotate}deg); animation-duration: {card.duration}s">
+    on:click={card.type === 'card' ? onClickCard : ''}
+    style="transform: translate({card.translateX}, {card.translateY}) 
+           rotate({card.rotate}deg); 
+           animation-duration: {card.duration}s; 
+           cursor: {card.type === 'card' ? 'pointer' : ''}">
     {#if card.type === 'card'}
         <div class="front">
             <img src={card.imagePath} alt="lion" />

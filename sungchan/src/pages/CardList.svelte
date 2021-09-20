@@ -5,7 +5,7 @@
     overflow-x: hidden;
 }
 
-.cardList {
+.card-list {
     display: flex;
     transition: 0.3s ease-out;
 }
@@ -13,16 +13,16 @@
 
 <script>
 import { onDestroy, onMount } from 'svelte';
-import { cardId, cardList } from '~/store/card';
+import { cardId, cardList, cardWheel } from '~/store/card';
 import { backgroundColorStyle, colorStyle } from '~/store/header';
-import IconList from '~/components/IconList.svelte';
+import Icons from '~/components/Icons.svelte';
+import { touchSlide } from '~/actions/slide';
+import { iconId } from '../store/card';
 
 let cardListEl;
 let cardIndex = 0;
 let baseWidthClientWidth = 0;
-let touchStartX = 0;
 let touchGab = 0;
-let isTouch = false;
 
 onMount(() => {
     // 헤더 색깔 변경
@@ -30,14 +30,17 @@ onMount(() => {
     colorStyle.change('card-board-style');
 
     // 선택된 카드 인덱스 구하기
-    cardList.forEach((storeCard, index) => {
-        if (storeCard.id === $cardId) {
+    cardList.forEach((card, index) => {
+        if (card.id === $cardId) {
             cardIndex = index;
             return false;
         }
     });
 
     window.addEventListener('wheel', onWheel);
+
+    // 아이콘 아이디값 초기화
+    iconId.change('');
 });
 
 onDestroy(() => {
@@ -46,29 +49,37 @@ onDestroy(() => {
 
 const onWheel = (e) => {
     // 휠을 하면 페이지 넘어가기
-    cardIndex = e.deltaY > 0 ? cardIndex + 1 : cardIndex - 1;
-    cardIndex = cardIndex < 0 ? 0 : cardIndex;
-    cardIndex = cardIndex >= cardList.length ? cardList.length - 1 : cardIndex;
-};
+    if ($cardWheel.down && e.deltaY > 0) {
+        cardIndex++;
 
-// 화면 터치시 페이지 넘어가기
-const onTouchStartCardList = (e) => {
-    touchStartX = e.changedTouches[0].clientX;
-    isTouch = true;
-    cardListEl.style.transition = 'initial';
-};
+        if (cardIndex >= cardList.length) {
+            cardIndex = cardList.length - 1;
+        } else {
+            cardWheel.init();
+        }
 
-const onTouchMoveCardList = (e) => {
-    if (isTouch) {
-        touchGab = touchStartX - e.changedTouches[0].clientX;
+        // store 변경
+        cardId.changeIndex(cardIndex);
+    } else if ($cardWheel.up && e.deltaY < 0) {
+        cardIndex--;
+
+        if (cardIndex < 0) {
+            cardIndex = 0;
+        } else {
+            cardWheel.init();
+        }
+
+        // store 변경
+        cardId.changeIndex(cardIndex);
     }
 };
 
-const onTouchEndCardList = () => {
-    isTouch = false;
-    touchStartX = 0;
-    cardListEl.style.transition = '0.3s ease-out';
+// 화면 터치시 페이지 넘어가기
+const nodeTouchMove = (e) => {
+    touchGab = e.detail.touchGab;
+};
 
+const nodeTouchEnd = () => {
     if (touchGab >= 80) {
         cardIndex++;
     } else if (touchGab <= -80) {
@@ -77,7 +88,9 @@ const onTouchEndCardList = () => {
 
     cardIndex = cardIndex < 0 ? 0 : cardIndex;
     cardIndex = cardIndex >= cardList.length ? cardList.length - 1 : cardIndex;
-    touchGab = 0;
+
+    // store 변경
+    cardId.changeIndex(cardIndex);
 };
 </script>
 
@@ -91,15 +104,14 @@ const onTouchEndCardList = () => {
 
 <div class="base-width" bind:clientWidth={baseWidthClientWidth}>
     <div
-        class="cardList"
+        class="card-list"
         bind:this={cardListEl}
-        on:touchstart={onTouchStartCardList}
-        on:touchmove={onTouchMoveCardList}
-        on:touchend={onTouchEndCardList}
+        use:touchSlide={nodeTouchEnd}
+        on:nodeTouchMove={nodeTouchMove}
         style="width: {baseWidthClientWidth * cardList.length}px; margin-left:-{baseWidthClientWidth * cardIndex +
             touchGab}px">
         {#each cardList as card (card.id)}
-            <IconList {card} {baseWidthClientWidth} />
+            <Icons {card} {baseWidthClientWidth} />
         {/each}
     </div>
 </div>
