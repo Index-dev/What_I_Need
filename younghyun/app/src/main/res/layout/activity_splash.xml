@@ -5,29 +5,22 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_gradient">
+    android:background="@drawable/splash_background">
 
     <!-- Don't worry about the id names I have named the id's with reference to the file name for consistency -->
-
+    <LinearLayout
+        android:gravity="end | bottom"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="match_parent"
-        android:layout_height="230dp"
-        android:layout_marginTop="130dp"
-        android:src="@mipmap/ic_launcher_adaptive_fore" />
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="30dp"
+        android:layout_marginRight="30dp"
+        android:src="@drawable/splash_logo" />
 
-
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_marginTop="200dp"
-        android:padding="15dp"
-        android:text="Designed by Eum young hyun"
-        android:textColor="@color/black"
-        android:textSize="15dp"
-        android:textStyle="bold"
-        android:textAlignment="center"/>
-
+    </LinearLayout>
 </LinearLayout>
