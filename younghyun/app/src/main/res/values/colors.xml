@@ -5,6 +5,7 @@
     <color name="third">#FEC326</color>
     <color name="fourth">#E66822</color>
     <color name="fives">#FE5326</color>
+    <color name="transparent">#00000000</color>
     <color name="black">#ff070707</color>
     <color name="white">#FFF2F2F2</color>
 </resources>
