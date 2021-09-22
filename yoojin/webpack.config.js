@@ -13,19 +13,15 @@ module.exports = {
   },
   module: {
     rules: [
-      // 첫 번째 룰
       {
-        test: /\.(js)$/,
-        exclude: /node_modules/,
-        use: ["babel-loader"]
+        test: /\.(js|jsx)$/,
+        exclude: "/node_modules/",
+        loader: "babel-loader"
       },
-      // 두 번째 룰
       {
         test: /\.css$/,
         use: [
-          {
-            loader: "style-loader"
-          },
+          { loader: "style-loader" },
           {
             loader: "css-loader",
             options: {
@@ -34,6 +30,13 @@ module.exports = {
             }
           }
         ]
+      },
+      {
+        test: /\.jfif$/,
+        loader: "file-loader",
+        options: {
+          name: "[name].[ext]"
+        }
       }
     ]
   },
