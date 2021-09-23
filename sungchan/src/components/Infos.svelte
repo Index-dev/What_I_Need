@@ -3,6 +3,7 @@
 
 .icon {
     background-color: #fff;
+    overflow: auto;
 
     & > .infos {
         text-align: center;
@@ -10,6 +11,7 @@
 
         & > .icon-image {
             width: MIN(7.8em, calc(3.2em + 6.2vw));
+            border-radius: 6px;
         }
 
         & > .info-table {
@@ -30,6 +32,10 @@
             & > tbody > tr > td:first-child {
                 vertical-align: top;
             }
+        }
+
+        & > .info-table:last-child {
+            margin: 18px auto;
         }
     }
 }
@@ -54,6 +60,12 @@
     margin: 0;
     padding: 0;
     font-size: MIN(1.2em, calc(0.6em + 1.1vw));
+    line-height: MIN(30px, calc(18px + 0.8vw));
+
+    & > .content-link {
+        color: #0050a0;
+        cursor: pointer;
+    }
 }
 </style>
 
@@ -85,11 +97,10 @@ $: $iconId,
     (() => {
         if (iconEl) {
             if ($iconId === icon.id) {
-                iconEl.style.overflow = 'auto';
+                iconEl.scrollTo(0, 0);
                 iconEl.addEventListener('wheel', onWheelIconEl);
                 onWheelIconEl();
             } else {
-                iconEl.style.overflow = 'hidden';
                 iconEl.removeEventListener('wheel', onWheelIconEl);
             }
         }
@@ -135,7 +146,11 @@ const onWheelIconEl = (e) => {
                             <td>
                                 <h5 class="content-content">
                                     {#if content.type === 'link'}
-                                        <a href={content.content}>{content.content}</a>
+                                        <span
+                                            class="content-link"
+                                            on:click={() => {
+                                                window.open(content.content);
+                                            }}>{content.content}</span>
                                     {:else}
                                         {content.content}
                                     {/if}

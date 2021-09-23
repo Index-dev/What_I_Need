@@ -100,43 +100,24 @@ export const cardList = [
                         contentList: [
                             {
                                 type: 'text',
-                                title: '이름1',
+                                title: '이름',
                                 content: '리액트 (React)',
                             },
                             {
-                                type: 'text',
-                                title: '이름2',
-                                content: '리액트 (React)',
+                                type: 'link',
+                                title: '공식 사이트',
+                                content: 'https://ko.reactjs.org',
                             },
                             {
                                 type: 'text',
-                                title: '이름3',
-                                content: '리액트 (React)',
+                                title: '출시일',
+                                content: '2013년',
                             },
                             {
                                 type: 'text',
-                                title: '이름4',
-                                content: '리액트 (React)',
-                            },
-                            {
-                                type: 'text',
-                                title: '이름5',
-                                content: '리액트 (React)',
-                            },
-                            {
-                                type: 'text',
-                                title: '이름6',
-                                content: '리액트 (React)',
-                            },
-                            {
-                                type: 'text',
-                                title: '이름7',
-                                content: '리액트 (React)',
-                            },
-                            {
-                                type: 'text',
-                                title: '이름8',
-                                content: '리액트 (React)',
+                                title: '간단 소개',
+                                content:
+                                    '2021년 기준 FE진영에서 가장 많이 사용되는 SPA기술로서 대부분의 개발을 자바스크립트를 이용하는 JSX라는 특징을 가짐',
                             },
                         ],
                     },
@@ -145,9 +126,23 @@ export const cardList = [
                         contentList: [
                             {
                                 type: 'link',
-                                title: '초기 세팅',
-                                content:
-                                    'https://zerchoaskhdasbd/qwehqjks/ASDq123/ajbdjk123/asmdbjk2@@#!/jabndjk123/@askdk',
+                                title: '초기 설정',
+                                content: 'https://jforj.tistory.com/145',
+                            },
+                            {
+                                type: 'link',
+                                title: '라우터 설정',
+                                content: 'https://jforj.tistory.com/146',
+                            },
+                            {
+                                type: 'link',
+                                title: 'Redux 설정',
+                                content: 'https://jforj.tistory.com/148',
+                            },
+                            {
+                                type: 'link',
+                                title: 'MobX 설정',
+                                content: 'https://jforj.tistory.com/154',
                             },
                         ],
                     },
@@ -163,53 +158,24 @@ export const cardList = [
                         contentList: [
                             {
                                 type: 'text',
-                                title: '이름1',
-                                content: '리액트 (React)',
+                                title: '이름',
+                                content: '뷰 (Vue)',
                             },
-                            {
-                                type: 'text',
-                                title: '이름2',
-                                content: '리액트 (React)',
-                            },
-                            {
-                                type: 'text',
-                                title: '이름3',
-                                content: '리액트 (React)',
-                            },
-                            {
-                                type: 'text',
-                                title: '이름4',
-                                content: '리액트 (React)',
-                            },
-                            {
-                                type: 'text',
-                                title: '이름5',
-                                content: '리액트 (React)',
-                            },
-                            {
-                                type: 'text',
-                                title: '이름6',
-                                content: '리액트 (React)',
-                            },
-                            {
-                                type: 'text',
-                                title: '이름7',
-                                content: '리액트 (React)',
-                            },
-                            {
-                                type: 'text',
-                                title: '이름8',
-                                content: '리액트 (React)',
-                            },
-                        ],
-                    },
-                    {
-                        title: '관련 사이트',
-                        contentList: [
                             {
                                 type: 'link',
-                                title: '초기 세팅',
-                                content: 'https://zerocho...',
+                                title: '공식 사이트',
+                                content: 'https://vuejs.org',
+                            },
+                            {
+                                type: 'text',
+                                title: '출시일',
+                                content: '2014년',
+                            },
+                            {
+                                type: 'text',
+                                title: '간단 소개',
+                                content:
+                                    '기존 html과 유사한 형태로 개발되기 때문에 처음 SPA를 배우는 개발자들이 느끼는 러닝커브가 낮음',
                             },
                         ],
                     },
@@ -228,15 +194,21 @@ export const cardList = [
                                 title: '이름',
                                 content: '스벨트 (Svelte)',
                             },
-                        ],
-                    },
-                    {
-                        title: '관련 사이트',
-                        contentList: [
                             {
                                 type: 'link',
-                                title: '초기 세팅',
-                                content: 'https://zerocho...',
+                                title: '공식 사이트',
+                                content: 'https://svelte.dev',
+                            },
+                            {
+                                type: 'text',
+                                title: '출시일',
+                                content: '2019년',
+                            },
+                            {
+                                type: 'text',
+                                title: '간단 소개',
+                                content:
+                                    '가상돔을 사용하지 않는 SPA기술로 가상돔의 오버헤드를 줄여줄 수 있고 또한 가상돔이 있는 것과 같은 빠른 렌더링을 제공',
                             },
                         ],
                     },
@@ -258,7 +230,7 @@ export const cardList = [
             {
                 id: encrypt(),
                 title: 'Pinterest',
-                imagePath: '/images/lion.png',
+                imagePath: '/images/pinterest.png',
                 infoList: [
                     {
                         title: '기본 정보',
@@ -268,6 +240,22 @@ export const cardList = [
                                 title: '이름',
                                 content: '핀터레스트 (Pinterest)',
                             },
+                            {
+                                type: 'link',
+                                title: '공식 사이트',
+                                content: 'https://www.pinterest.co.kr',
+                            },
+                            {
+                                type: 'text',
+                                title: '출시일',
+                                content: '2010년',
+                            },
+                            {
+                                type: 'text',
+                                title: '간단 소개',
+                                content:
+                                    '이미지 보드에 핀으로 사진을 꽂는 것과 비슷한 개념으로 이미지 파일들을 모으고 관리할 수 있음',
+                            },
                         ],
                     },
                 ],
@@ -275,7 +263,7 @@ export const cardList = [
             {
                 id: encrypt(),
                 title: 'Behance',
-                imagePath: '/images/lion.png',
+                imagePath: '/images/behance.png',
                 infoList: [
                     {
                         title: '기본 정보',
@@ -285,6 +273,21 @@ export const cardList = [
                                 title: '이름',
                                 content: '비핸스 (Behance)',
                             },
+                            {
+                                type: 'link',
+                                title: '공식 사이트',
+                                content: 'https://www.behance.net',
+                            },
+                            {
+                                type: 'text',
+                                title: '출시일',
+                                content: '2005년',
+                            },
+                            {
+                                type: 'text',
+                                title: '간단 소개',
+                                content: '저작한 작품 등을 전시하고 검색할 수 있는 온라인 웹 사이트',
+                            },
                         ],
                     },
                 ],
@@ -292,7 +295,7 @@ export const cardList = [
             {
                 id: encrypt(),
                 title: 'Awards',
-                imagePath: '/images/lion.png',
+                imagePath: '/images/awards.png',
                 infoList: [
                     {
                         title: '기본 정보',
@@ -302,73 +305,21 @@ export const cardList = [
                                 title: '이름',
                                 content: '어워즈 (Awards)',
                             },
-                        ],
-                    },
-                ],
-            },
-            {
-                id: encrypt(),
-                title: 'Awards',
-                imagePath: '/images/lion.png',
-                infoList: [
-                    {
-                        title: '기본 정보',
-                        contentList: [
                             {
-                                type: 'text',
-                                title: '이름',
-                                content: '어워즈 (Awards)',
+                                type: 'link',
+                                title: '공식 사이트',
+                                content: 'https://www.awwwards.com',
                             },
-                        ],
-                    },
-                ],
-            },
-            {
-                id: encrypt(),
-                title: 'Awards',
-                imagePath: '/images/lion.png',
-                infoList: [
-                    {
-                        title: '기본 정보',
-                        contentList: [
                             {
                                 type: 'text',
-                                title: '이름',
-                                content: '어워즈 (Awards)',
+                                title: '출시일',
+                                content: '2009년',
                             },
-                        ],
-                    },
-                ],
-            },
-            {
-                id: encrypt(),
-                title: 'Awards',
-                imagePath: '/images/lion.png',
-                infoList: [
-                    {
-                        title: '기본 정보',
-                        contentList: [
                             {
                                 type: 'text',
-                                title: '이름',
-                                content: '어워즈 (Awards)',
-                            },
-                        ],
-                    },
-                ],
-            },
-            {
-                id: encrypt(),
-                title: 'Awards',
-                imagePath: '/images/lion.png',
-                infoList: [
-                    {
-                        title: '기본 정보',
-                        contentList: [
-                            {
-                                type: 'text',
-                                title: '이름',
-                                content: '어워즈 (Awards)',
+                                title: '간단 소개',
+                                content:
+                                    '혁신적인 웹 디자인의 최고를 인정하고 홍보하는 것을 목표로 만들어진 웹 디자인 및 개발 경쟁 사이트',
                             },
                         ],
                     },
@@ -390,7 +341,7 @@ export const cardList = [
             {
                 id: encrypt(),
                 title: 'ColorHunt',
-                imagePath: '/images/lion.png',
+                imagePath: '/images/colorhunt.png',
                 infoList: [
                     {
                         title: '기본 정보',
@@ -400,6 +351,16 @@ export const cardList = [
                                 title: '이름',
                                 content: '컬러헌트 (ColorHunt)',
                             },
+                            {
+                                type: 'link',
+                                title: '공식 사이트',
+                                content: 'https://colorhunt.co',
+                            },
+                            {
+                                type: 'text',
+                                title: '간단 소개',
+                                content: '4가지의 여러 가지 색상 조합들을 모아놓은 사이트',
+                            },
                         ],
                     },
                 ],
@@ -407,7 +368,7 @@ export const cardList = [
             {
                 id: encrypt(),
                 title: 'ColorMind',
-                imagePath: '/images/lion.png',
+                imagePath: '/images/colormind.png',
                 infoList: [
                     {
                         title: '기본 정보',
@@ -416,6 +377,22 @@ export const cardList = [
                                 type: 'text',
                                 title: '이름',
                                 content: '컬러마인드 (ColorMind)',
+                            },
+                            {
+                                type: 'link',
+                                title: '공식 사이트',
+                                content: 'http://colormind.io',
+                            },
+                            {
+                                type: 'text',
+                                title: '간단 소개',
+                                content:
+                                    '사용자들이 선택한 색상들과 어울리는 여러 가지 색상들을 자동으로 매칭시켜주는 사이트',
+                            },
+                            {
+                                type: 'text',
+                                title: '개발자 경험',
+                                content: '가끔씩 서버가 다운되어 사용하지 못하는 경우가 있음',
                             },
                         ],
                     },
@@ -437,7 +414,7 @@ export const cardList = [
             {
                 id: encrypt(),
                 title: 'Figma',
-                imagePath: '/images/lion.png',
+                imagePath: '/images/figma.png',
                 infoList: [
                     {
                         title: '기본 정보',
@@ -445,7 +422,22 @@ export const cardList = [
                             {
                                 type: 'text',
                                 title: '이름',
-                                content: '피그마 (Figma))',
+                                content: '피그마 (Figma)',
+                            },
+                            {
+                                type: 'link',
+                                title: '공식 사이트',
+                                content: 'https://www.figma.com',
+                            },
+                            {
+                                type: 'text',
+                                title: '출시일',
+                                content: '2016년',
+                            },
+                            {
+                                type: 'text',
+                                title: '간단 소개',
+                                content: '웹 기반 무료 벡터 그래픽 편집기 및 프로토타이핑 도구',
                             },
                         ],
                     },
@@ -467,7 +459,7 @@ export const cardList = [
             {
                 id: encrypt(),
                 title: 'Fancy',
-                imagePath: '/images/lion.png',
+                imagePath: '/images/fancy.png',
                 infoList: [
                     {
                         title: '기본 정보',
@@ -475,7 +467,17 @@ export const cardList = [
                             {
                                 type: 'text',
                                 title: '이름',
-                                content: '팬시 (Fancy-Border-Radius))',
+                                content: '팬시 (Fancy-Border-Radius)',
+                            },
+                            {
+                                type: 'link',
+                                title: '공식 사이트',
+                                content: 'https://9elements.github.io/fancy-border-radius',
+                            },
+                            {
+                                type: 'text',
+                                title: '간단 소개',
+                                content: 'border-radius의 비율을 시각적으로 표현해 둔 웹 사이트',
                             },
                         ],
                     },
@@ -483,8 +485,8 @@ export const cardList = [
             },
             {
                 id: encrypt(),
-                title: 'Mattheulein',
-                imagePath: '/images/lion.png',
+                title: 'Matthewlein',
+                imagePath: '/images/Matthewlein.png',
                 infoList: [
                     {
                         title: '기본 정보',
@@ -492,7 +494,17 @@ export const cardList = [
                             {
                                 type: 'text',
                                 title: '이름',
-                                content: '매튜라인 (Mattheulein))',
+                                content: '매튜라인 (Matthewlein)',
+                            },
+                            {
+                                type: 'link',
+                                title: '공식 사이트',
+                                content: 'https://matthewlein.com/tools/ceaser',
+                            },
+                            {
+                                type: 'text',
+                                title: '간단 소개',
+                                content: 'cubic-bezier의 비율을 시각적으로 표현해 둔 웹 사이트',
                             },
                         ],
                     },
@@ -514,7 +526,7 @@ export const cardList = [
             {
                 id: encrypt(),
                 title: 'Vercel',
-                imagePath: '/images/lion.png',
+                imagePath: '/images/vercel.png',
                 infoList: [
                     {
                         title: '기본 정보',
@@ -522,7 +534,23 @@ export const cardList = [
                             {
                                 type: 'text',
                                 title: '이름',
-                                content: '버셀 (Vercel))',
+                                content: '버셀 (Vercel)',
+                            },
+                            {
+                                type: 'link',
+                                title: '공식 사이트',
+                                content: 'https://vercel.com',
+                            },
+                            {
+                                type: 'text',
+                                title: '간단 소개',
+                                content:
+                                    '개발된 소스코드를 기반으로 지속적 배포를 하여 개인 소유의 서버없이도 무료로 정적 사이트를 배포 할 수 있도록 도와줌',
+                            },
+                            {
+                                type: 'text',
+                                title: '개발자 경험',
+                                content: 'CDN이 서울에 있어 배포된 사이트를 한국에서 접속할 경우 속도가 빠른편 ',
                             },
                         ],
                     },
@@ -531,7 +559,7 @@ export const cardList = [
             {
                 id: encrypt(),
                 title: 'Netlify',
-                imagePath: '/images/lion.png',
+                imagePath: '/images/netlify.png',
                 infoList: [
                     {
                         title: '기본 정보',
@@ -539,7 +567,23 @@ export const cardList = [
                             {
                                 type: 'text',
                                 title: '이름',
-                                content: '넷리파이 (Netlify))',
+                                content: '넷리파이 (Netlify)',
+                            },
+                            {
+                                type: 'link',
+                                title: '공식 사이트',
+                                content: 'https://www.netlify.com',
+                            },
+                            {
+                                type: 'text',
+                                title: '출시일',
+                                content: '2014년',
+                            },
+                            {
+                                type: 'text',
+                                title: '간단 소개',
+                                content:
+                                    '개발된 소스코드를 기반으로 지속적 배포를 하여 개인 소유의 서버없이도 무료로 정적 사이트를 배포 할 수 있도록 도와줌',
                             },
                         ],
                     },

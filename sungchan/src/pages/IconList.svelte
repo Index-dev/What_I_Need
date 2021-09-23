@@ -7,7 +7,6 @@
 
 .icon-list {
     display: flex;
-    transition: 0.3s ease-out;
 }
 </style>
 
@@ -25,6 +24,11 @@ let iconIndex = 0;
 let card;
 
 onMount(() => {
+    // 값이 없을 경우 초기 화면
+    if (!$iconId) {
+        location.href = '/';
+    }
+
     // 헤더 색깔 변경
     backgroundColorStyle.change('other-style');
     colorStyle.change('card-board-style');
@@ -39,6 +43,11 @@ onMount(() => {
     });
 
     window.addEventListener('wheel', onWheel);
+
+    // 마운트되자마자 transition 적용되지 않게 하기
+    setTimeout(() => {
+        iconListEl.style.transition = '0.3s ease-out';
+    }, 0);
 });
 
 onDestroy(() => {
@@ -75,6 +84,11 @@ const onWheel = (e) => {
 // 화면 터치시 페이지 넘어가기
 const nodeTouchMove = (e) => {
     touchGab = e.detail.touchGab;
+
+    // 마지막 아이콘에서 터치로 밀시 빈 화면 나오는 것 방지
+    if (iconIndex >= card.iconList.length - 1 && touchGab > 0) {
+        touchGab = 0;
+    }
 };
 
 const nodeTouchEnd = () => {

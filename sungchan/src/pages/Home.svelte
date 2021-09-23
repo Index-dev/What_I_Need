@@ -28,6 +28,11 @@
     margin: 0;
     font-size: MIN(4.3em, calc(1.9em + 2.2vw));
     font-style: oblique;
+    text-shadow: 2px 2px rgba(0, 0, 0, 0.5);
+
+    & > .title-empha {
+        color: $card-board-color;
+    }
 }
 
 .searchText {
@@ -82,7 +87,7 @@ $: searchText, filterCardList.filter(searchText);
 
 <div class="base-width">
     <div class="search">
-        <h1 class="title">select a card ...</h1>
+        <h1 class="title"><span class="title-empha">s</span>elect a <span class="title-empha">c</span>ard ...</h1>
         <input
             class="searchText"
             type="text"

@@ -1,4 +1,5 @@
 <style lang="scss">
+@import '../scss/common.scss';
 .card {
     background-color: #fff;
     padding: 20px;
@@ -10,21 +11,24 @@
 .card-title {
     font-size: MIN(2.8em, calc(1.7em + 2.2vw));
     margin: MIN(1em, calc(0.3em + 0.7vw)) 0 MIN(1.4em, calc(0.5em + 0.9vw)) 0;
+    color: $search-color;
+    text-shadow: 2px 2px darken(#fff, 20%);
 }
 
 .icon {
     display: inline-block;
     margin: 22px MIN(32px, calc(4px + 2.2vw));
     cursor: pointer;
-}
 
-.icon-title {
-    font-size: MIN(1.5em, calc(0.8em + 1.2vw));
-    margin: MIN(0.7em, calc(0.2em + 0.6vw));
-}
+    & > .icon-title {
+        font-size: MIN(1.5em, calc(0.8em + 1.2vw));
+        margin: MIN(0.7em, calc(0.2em + 0.6vw));
+    }
 
-.icon-image {
-    width: MiN(9.6em, calc(3.1em + 8.8vw));
+    & > .icon-image {
+        width: MiN(9.6em, calc(3.1em + 8.8vw));
+        border-radius: 6px;
+    }
 }
 </style>
 
@@ -64,11 +68,10 @@ $: $cardId,
     (() => {
         if (cardEl) {
             if ($cardId === card.id) {
-                cardEl.style.overflow = 'auto';
+                cardEl.scrollTo(0, 0);
                 cardEl.addEventListener('wheel', onWheelCardEl);
                 onWheelCardEl();
             } else {
-                cardEl.style.overflow = 'hidden';
                 cardEl.removeEventListener('wheel', onWheelCardEl);
             }
         }

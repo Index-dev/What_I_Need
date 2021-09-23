@@ -13,7 +13,6 @@
     margin-bottom: 2px;
     background-color: $search-color;
     box-shadow: 0 2px darken($search-color, 5%);
-    transition-duration: 0.6s;
     display: flex;
     justify-content: space-between;
 
@@ -44,10 +43,12 @@
 
     :global(&.card-board-style) {
         color: $card-board-color;
+        text-shadow: 2px 2px darken(#fff, 20%);
     }
 
     :global(&.other-style) {
         color: #fff;
+        text-shadow: 2px 2px rgba(0, 0, 0, 0.5);
     }
 }
 </style>
@@ -67,8 +68,12 @@ $: backgroundColorStyle,
             headerEl.classList.remove('search-style');
             headerEl.classList.remove('card-board-style');
             headerEl.classList.remove('other-style');
+            headerEl.style.transitionDuration = '';
 
             if ($backgroundColorStyle) {
+                if ($backgroundColorStyle !== 'other-style') {
+                    headerEl.style.transitionDuration = '0.6s';
+                }
                 headerEl.classList.add($backgroundColorStyle);
             }
         }
