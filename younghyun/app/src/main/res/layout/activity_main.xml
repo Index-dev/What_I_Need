@@ -59,7 +59,17 @@
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:text="명상"
-                    android:layout_gravity="center"/>
+                    android:layout_gravity="center"
+                    android:onClick="showTimer"
+                    />
+                <Button
+                    android:id="@+id/clean_bed"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:text="잠자리\n정리"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="20dp"
+                    />
                 <Button
                     android:id="@+id/button04"
                     android:layout_width="100dp"
@@ -97,6 +107,7 @@
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:text="awwwards\n리뷰"
+                    android:textSize="11dp"
                     android:layout_gravity="center"
                     android:layout_marginRight="20dp"
                     />

@@ -1,7 +1,9 @@
 package com.example.eumericano
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import com.example.eumericano.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -14,6 +16,11 @@ class MainActivity : AppCompatActivity() {
 
         mBinding= ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+    }
+
+    fun showTimer(v: View) {
+        var intent= Intent(this, SplashScreenActivity::class.java)
+        startActivity(intent)
     }
 
 }
