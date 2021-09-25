@@ -2,25 +2,23 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/splash_background">
 
-    <!-- Don't worry about the id names I have named the id's with reference to the file name for consistency -->
     <LinearLayout
-        android:gravity="end | bottom"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         >
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="30dp"
-        android:layout_marginRight="30dp"
-        android:src="@drawable/splash_logo" />
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="130dp"
+        android:src="@drawable/blur_logo" />
 
     </LinearLayout>
 </LinearLayout>
