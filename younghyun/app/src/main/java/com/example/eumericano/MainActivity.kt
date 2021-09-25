@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun showTimer(v: View) {
-        var intent= Intent(this, SplashScreenActivity::class.java)
+        var intent= Intent(this, TimerActivity::class.java)
         startActivity(intent)
     }
 
