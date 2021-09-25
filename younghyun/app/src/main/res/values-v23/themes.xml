@@ -1,5 +1,6 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
     <style name="Theme.Splash" parent="Theme.AppCompat.Light">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/primary</item>
@@ -10,12 +11,16 @@
         <item name="colorSecondaryVariant">@color/third</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor">@color/darkBlue</item>
+        <item name="android:statusBarColor">@color/darkBlue
+        </item>
+        <item name="android:windowLightStatusBar">false</item>
         <!-- Customize your theme here. -->
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
 
     </style>
+
+
     <style name="Theme.Eumericano" parent="Theme.AppCompat.Light">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/primary</item>
@@ -26,10 +31,10 @@
         <item name="colorSecondaryVariant">@color/third</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor">@color/black</item
-            ><!-- Customize your theme here. -->
+        <item name="android:statusBarColor">@color/black</item>
+        <!-- Customize your theme here. -->
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
 
-    </style>
+    </style>>
 </resources>
