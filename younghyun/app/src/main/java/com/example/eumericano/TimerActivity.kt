@@ -71,8 +71,8 @@ class TimerActivity: AppCompatActivity() {
             hourTV.text = hour.toString()
         }
 
-        val timer = Timer()
-        timer.schedule(object : TimerTask(){
+        var timer = Timer()
+        val run = object : TimerTask(){
             override fun run() {
                 // 0초 이상이면
                 when {
@@ -125,7 +125,26 @@ class TimerActivity: AppCompatActivity() {
                     //TODO: 알람설정
                 }
             }
-        }, 1000, 1000)
+        }
+        timer.schedule(run, 1000, 1000)
+
+        val startBtn = timerBinding.startBtn
+
+        startBtn.text = "정지"
+        startBtn.setOnClickListener(View.OnClickListener {
+            timer.cancel()
+            startBtn.text = "재시작"
+            hourET.setText(hourTV.text)
+            minuteET.setText(minuteTV.text)
+            secondET.setText(secondTV.text)
+            startBtn.setOnClickListener(View.OnClickListener {
+                handleStart(v)
+            })
+        })
+    }
+
+    fun stop() {
+
     }
 
     fun handleComplete(v: View) {
