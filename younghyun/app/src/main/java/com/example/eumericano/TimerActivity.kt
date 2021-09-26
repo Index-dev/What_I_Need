@@ -3,6 +3,9 @@ package com.example.eumericano
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
+import android.widget.EditText
+import android.widget.TextView
 import com.example.eumericano.databinding.ActivityMainBinding
 import com.example.eumericano.databinding.ActivityTimerBinding
 import java.util.*
@@ -132,19 +135,20 @@ class TimerActivity: AppCompatActivity() {
 
         startBtn.text = "정지"
         startBtn.setOnClickListener(View.OnClickListener {
-            timer.cancel()
             startBtn.text = "재시작"
-            hourET.setText(hourTV.text)
-            minuteET.setText(minuteTV.text)
-            secondET.setText(secondTV.text)
-            startBtn.setOnClickListener(View.OnClickListener {
-                handleStart(v)
-            })
+            stop(timer, hourET, minuteET, secondET, startBtn, hourTV, minuteTV, secondTV, v)
         })
     }
 
-    fun stop() {
-
+    fun stop(timer: Timer, hourET:EditText, minuteET:EditText, secondET:EditText,
+             startBtn:Button, hourTV: TextView, minuteTV: TextView, secondTV: TextView, v: View) {
+        timer.cancel()
+        hourET.setText(hourTV.text)
+        minuteET.setText(minuteTV.text)
+        secondET.setText(secondTV.text)
+        startBtn.setOnClickListener(View.OnClickListener {
+            handleStart(v)
+        })
     }
 
     fun handleComplete(v: View) {
