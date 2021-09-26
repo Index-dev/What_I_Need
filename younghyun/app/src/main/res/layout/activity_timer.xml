@@ -219,7 +219,8 @@
                 android:text="새로고침"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                android:onClick="reflesh"/>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

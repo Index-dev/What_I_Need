@@ -16,6 +16,13 @@ class TimerActivity: AppCompatActivity() {
     private var tBinding: ActivityTimerBinding? = null
     private val timerBinding get() = tBinding!!
 
+    var timer = Timer()
+
+    var firstHour = 0
+    var firstMinute = 0
+    var firstSecond = 0
+    var isFirstStart = true
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         tBinding= ActivityTimerBinding.inflate(layoutInflater)
@@ -54,6 +61,12 @@ class TimerActivity: AppCompatActivity() {
         var minute = if(minuteET.text.toString() != "") Integer.parseInt(minuteET.text.toString()) else 0
         var second = if(secondET.text.toString() != "") Integer.parseInt(secondET.text.toString()) else 0
 
+        if (isFirstStart) {
+            firstHour = hour
+            firstMinute = minute
+            firstSecond = second
+            isFirstStart = false
+        }
 
 
         if(second <= 9){
@@ -74,7 +87,6 @@ class TimerActivity: AppCompatActivity() {
             hourTV.text = hour.toString()
         }
 
-        var timer = Timer()
         val run = object : TimerTask(){
             override fun run() {
                 // 0초 이상이면
@@ -140,15 +152,48 @@ class TimerActivity: AppCompatActivity() {
         })
     }
 
-    fun stop(timer: Timer, hourET:EditText, minuteET:EditText, secondET:EditText,
+    fun stop(exTimer: Timer, hourET:EditText, minuteET:EditText, secondET:EditText,
              startBtn:Button, hourTV: TextView, minuteTV: TextView, secondTV: TextView, v: View) {
-        timer.cancel()
+        exTimer.cancel()
         hourET.setText(hourTV.text)
         minuteET.setText(minuteTV.text)
         secondET.setText(secondTV.text)
+        timer = Timer()
         startBtn.setOnClickListener(View.OnClickListener {
             handleStart(v)
         })
+    }
+
+    fun reflesh(v: View) {
+        val hourET = timerBinding.hourET
+        val minuteET = timerBinding.minuteET
+        val secondET = timerBinding.secondET
+
+        val hourTV = timerBinding.hourTV
+        val minuteTV = timerBinding.minuteTV
+        val secondTV = timerBinding.secondTV
+
+        val startBtn = timerBinding.startBtn
+
+        if(firstSecond <= 9){
+            secondTV.text = getString(R.string.textContent,"0${firstSecond}")
+        } else {
+            secondTV.text = firstSecond.toString()
+        }
+
+        if(firstMinute <= 9){
+            minuteTV.text = getString(R.string.textContent,"0${firstMinute}")
+        } else {
+            minuteTV.text = firstMinute.toString()
+        }
+
+        if(firstHour <= 9){
+            hourTV.text = getString(R.string.textContent, "0${firstHour}")
+        } else {
+            hourTV.text = firstHour.toString()
+        }
+        startBtn.text = "시작"
+        stop(timer, hourET, minuteET, secondET, startBtn, hourTV, minuteTV, secondTV, startBtn.rootView)
     }
 
     fun handleComplete(v: View) {
