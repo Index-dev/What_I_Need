@@ -6,12 +6,18 @@ const encrypt = () => shortid.generate();
 // 빈 카드 인덱스
 const emptyList = [2, 4, 7];
 
+// 카드 뒷면 색생
+const cardColor1 = '#5BAED1';
+const cardColor2 = '#A75064';
+const cardColor3 = '#A84FA1';
+
 interface Icard {
     id: string;
     type: string;
     title: string;
     description: string;
     imagePath: string;
+    color: string;
     translateX: number;
     translateY: number;
     rotate: number;
@@ -84,7 +90,8 @@ export const cardList = [
         type: 'card',
         title: 'FE',
         description: '프론트엔드 기술들을 확인할 수 있는 카드',
-        imagePath: '/images/lion.png',
+        imagePath: '/images/fe.svg',
+        color: cardColor1,
         translateX: 0,
         translateY: 0,
         rotate: 0,
@@ -221,7 +228,8 @@ export const cardList = [
         type: 'card',
         title: '디자인',
         description: '다양한 디자인들을 확인할 수 있는 카드',
-        imagePath: '/images/lion.png',
+        imagePath: '/images/design.svg',
+        color: cardColor2,
         translateX: 0,
         translateY: 0,
         rotate: 0,
@@ -332,7 +340,8 @@ export const cardList = [
         type: 'card',
         title: '색상',
         description: '색상 조합들을 찾을 수 있게 도와주는 카드',
-        imagePath: '/images/lion.png',
+        imagePath: '/images/color.svg',
+        color: cardColor3,
         translateX: 0,
         translateY: 0,
         rotate: 0,
@@ -405,7 +414,8 @@ export const cardList = [
         type: 'card',
         title: 'SVG',
         description: 'SVG를 만들 수 있게 도와주는 카드',
-        imagePath: '/images/lion.png',
+        imagePath: '/images/svg.svg',
+        color: cardColor1,
         translateX: 0,
         translateY: 0,
         rotate: 0,
@@ -450,7 +460,8 @@ export const cardList = [
         type: 'card',
         title: 'CSS',
         description: '디테일한 CSS작업에 도움을 줄 수 있는 카드',
-        imagePath: '/images/lion.png',
+        imagePath: '/images/css.svg',
+        color: cardColor2,
         translateX: 0,
         translateY: 0,
         rotate: 0,
@@ -517,7 +528,8 @@ export const cardList = [
         type: 'card',
         title: 'CD',
         description: '자동 배포를 도와주는 카드',
-        imagePath: '/images/lion.png',
+        imagePath: '/images/cd.svg',
+        color: cardColor3,
         translateX: 0,
         translateY: 0,
         rotate: 0,
@@ -664,6 +676,7 @@ export const filterCardList = {
                     title: '',
                     description: '',
                     imagePath: '',
+                    color: '',
                     translateX: 0,
                     translateY: 0,
                     rotate: 0,

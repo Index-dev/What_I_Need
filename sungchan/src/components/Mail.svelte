@@ -94,6 +94,13 @@ $circle-size: MIN(50px, calc(32px + 1.2vw));
                         -1px -1px 1px darken($search-color, 10%) inset;
                     border-radius: 8px;
                     padding: 8px;
+
+                    -ms-overflow-style: none; /* IE and Edge */
+                    scrollbar-width: none; /* Firefox */
+
+                    &::-webkit-scrollbar {
+                        display: none; /* Chrome, Safari, Opera */
+                    }
                 }
 
                 & > .button {
@@ -188,7 +195,11 @@ $: modal,
     <div class="base-width">
         <div class="modal-inner">
             <form on:submit={sendEmail}>
-                <textarea class="modify-text" name="message" bind:value={modifyText} />
+                <textarea
+                    class="modify-text"
+                    name="message"
+                    bind:value={modifyText}
+                    placeholder="요청 내용을 입력해주세요 ..." />
                 <button class="button modify-button">정보수정 요청</button>
                 <button class="button cancle-button">취소</button>
             </form>

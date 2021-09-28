@@ -45,12 +45,12 @@
 
     & > .front > img,
     & > .back > div {
-        background-color: rgba(0, 0, 0, 0.2);
         border-radius: 20px;
         width: 100%;
         height: 100%;
         margin: 0;
         padding: 0;
+        color: #fff;
     }
 
     & > .front {
@@ -65,6 +65,13 @@
         padding: MIN(10px, calc(2px + 1vw));
         box-sizing: border-box;
         font-size: 1.6em;
+        overflow: auto;
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
+
+        &::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Opera */
+        }
 
         & > .title {
             margin: 0;
@@ -129,10 +136,10 @@ const onClickCard = () => {
            cursor: {card.type === 'card' ? 'pointer' : ''}">
     {#if card.type === 'card'}
         <div class="front">
-            <img src={card.imagePath} alt="lion" />
+            <img src={card.imagePath} alt={card.title} style="background-color: {card.color};" />
         </div>
         <div class="back">
-            <div>
+            <div style="background-color: {card.color};">
                 <h3 class="title">{card.title}</h3>
                 <span class="description">{card.description}</span>
             </div>
