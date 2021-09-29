@@ -109,6 +109,7 @@ $circle-size: MIN(50px, calc(32px + 1.2vw));
                     border-radius: 8px;
                     border: none;
                     text-shadow: 0.2px 0.2px darken(#fff, 10%);
+                    cursor: pointer;
 
                     &.modify-button {
                         background-color: $card-board-color;
