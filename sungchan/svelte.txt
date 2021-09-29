@@ -1,0 +1,146 @@
+타입스크립트 환경 구축
+ 1. npx degit sveltejs/template {프로젝트 명}
+ 2. node scripts/setupTypeScript.js
+ 3. npm install
+ 4. tsconfig.json 수정
+	{
+	  "extends": "@tsconfig/svelte/tsconfig.json",
+	  "compilerOptions": {
+		/* Basic Options */
+		"target": "es5",
+		"module": "ESNext",
+		"lib": ["ES2015", "ES2016", "ES2017", "ES2018", "ES2019", "ES2020", "DOM"],
+		"declaration": true,
+		"outDir": "./public/build",
+
+		/* Strict Type-Checking Options */
+		"strict": true,
+		"noImplicitAny": true,
+
+		/* Module Resolution Options */
+		"moduleResolution": "node",
+		"esModuleInterop": true,
+
+		/* Advanced Options */
+		"skipLibCheck": true,
+		"forceConsistentCasingInFileNames": true
+	  },
+	  "include": ["src/**/*"],
+	  "exclude": ["node_modules/*", "__sapper__/*", "public/*"]
+	}
+	
+	
+	
+eslint, prettier 설정
+ 1. npm install -D prettier prettier-plugin-svelte
+ 2. root에 .prettierrc 생성
+	{
+		"singleQuote": true,
+		"semi": true,
+		"tabWidth": 4,
+		"trailingComma": "all",
+		"printWidth": 120,
+		"arrowParens": "always",
+		"svelteSortOrder": "options-styles-scripts-markup",
+		"svelteStrictMode": false, // true → <div foo="{bar}"></div> / false → <div foo={bar} />
+		"svelteBracketNewLine": false, /* true → <span
+													 ><div>foo</div>
+													 <span>bar</span></span
+												 > /
+										  false → <span
+													  ><div>foo</div>
+													  <span>bar</span></span>
+									   */
+ 		"svelteAllowShorthand": true, // true → <input type="text" {value} /> / false → <input type="text" value={value} />
+		"svelteIndentScriptAndStyle": false
+	}
+ 3. setting.json 수정
+    "[svelte]": {
+        "editor.formatOnSave": true
+    },
+    "[typescriptsvelte]": {
+        "editor.formatOnSave": true
+    },
+ 4. npm install -D eslint eslint-plugin-svelte3
+ 5. npm install -D @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-config-prettier eslint-plugin-prettier
+ 6. root에 .eslintrc.json 생성
+	{
+		"env": {
+			"browser": true,
+			"es6": true
+		},
+		"extends": [
+			"eslint:recommended",
+			"plugin:@typescript-eslint/recommended",
+			"plugin:prettier/recommended"
+		],
+		"parser": "@typescript-eslint/parser",
+		"parserOptions": {
+			"ecmaVersion": 2020,
+			"sourceType": "module",
+		},
+		"plugins": [
+			"svelte3",
+			"@typescript-eslint"
+		],
+		"overrides": [
+			{
+				"files": ["**/*.svelte"],
+				"processor": "svelte3/svelte3"
+			}
+		],
+		"rules": {
+			"prettier/prettier": [
+				"error", {
+					"endOfLine": "auto"
+				}
+			]
+		}
+	}
+ 7. root에 .eslintignore 생성
+	/rollup.config.js
+ 8. setting.json 수정
+    "[svelte]": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "svelte.svelte-vscode"
+    },
+	
+	
+	
+	
+라우터 사용하기
+ 1. npm install -D svelte-spa-router
+ 2. <script>
+	import Router from 'svelte-spa-router';
+	import Home from './Home.svelte';
+	import About from './About.svelte';
+	import Blog from './Blog.svelte';
+
+	const routes = {
+		'/': Home,
+		'/about': About,
+		'/blog': Blog,
+	};
+	</script>
+
+	<div>
+		<Router {routes} />
+	</div>
+ 3. <script>
+	import { link } from 'svelte-spa-router';
+	import active from 'svelte-spa-router/active';
+	</script>
+	<a href="/blog" use:link use:active>Blog</a>
+		
+		
+		
+		
+		
+replace를 이용한 env처리
+ 1. npm install -D @rollup/plugin-replace
+ 2. rollup.config.js 수정
+	plugin 내부에
+	 replace({
+		preventAssignment: true,
+		'process.env.test': JSON.stringify('myTest'),
+	}),
