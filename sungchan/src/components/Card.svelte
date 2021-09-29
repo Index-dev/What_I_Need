@@ -16,6 +16,7 @@
     height: MIN(25.8em, calc(7.8em + 16.5vw));
     font-size: 12px;
     animation-timing-function: cubic-bezier(0.16, 0.68, 0.24, 1);
+    opacity: 0;
 
     :global(&.animation) {
         animation-name: cardAnimation;
@@ -112,6 +113,7 @@ onMount(() => {
                     `-${outerWidth + (cardBoard.clientWidth / 3) * (index % 3)}px`,
                 );
                 cardEl.classList.add('animation');
+                cardEl.style.opacity = 1;
             }
         });
     };

@@ -53,7 +53,6 @@ import Card from '~/components/Card.svelte';
 import { filterCardList } from '~/store/card';
 
 let cardBoardEl;
-let searchTextEl;
 let searchText = '';
 
 // 헤더 배경 색깔 선택
@@ -72,9 +71,6 @@ const getBackgroundColorStyle = () => {
 onMount(() => {
     getBackgroundColorStyle();
     window.addEventListener('scroll', getBackgroundColorStyle);
-
-    tick();
-    searchTextEl.focus();
 });
 
 onDestroy(() => {
@@ -88,12 +84,7 @@ $: searchText, filterCardList.filter(searchText);
 <div class="base-width">
     <div class="search">
         <h1 class="title"><span class="title-empha">s</span>elect a <span class="title-empha">c</span>ard ...</h1>
-        <input
-            class="searchText"
-            type="text"
-            placeholder="검색어를 입력해주세요."
-            bind:this={searchTextEl}
-            bind:value={searchText} />
+        <input class="searchText" type="text" placeholder="검색어를 입력해주세요." bind:value={searchText} />
     </div>
     <div class="card-board" bind:this={cardBoardEl}>
         {#each $filterCardList as card, index (card.id)}
