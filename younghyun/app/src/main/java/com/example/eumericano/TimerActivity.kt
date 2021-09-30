@@ -196,7 +196,35 @@ class TimerActivity: AppCompatActivity() {
         stop(timer, hourET, minuteET, secondET, startBtn, hourTV, minuteTV, secondTV, startBtn.rootView)
     }
 
-    fun handleComplete(v: View) {
+    fun reset(v: View) {
+        val hourET = timerBinding.hourET
+        val minuteET = timerBinding.minuteET
+        val secondET = timerBinding.secondET
 
+        val hourTV = timerBinding.hourTV
+        val minuteTV = timerBinding.minuteTV
+        val secondTV = timerBinding.secondTV
+
+        val startBtn = timerBinding.startBtn
+
+        if(firstSecond <= 9){
+            secondTV.text = getString(R.string.textContent,"0${firstSecond}")
+        } else {
+            secondTV.text = firstSecond.toString()
+        }
+
+        if(firstMinute <= 9){
+            minuteTV.text = getString(R.string.textContent,"0${firstMinute}")
+        } else {
+            minuteTV.text = firstMinute.toString()
+        }
+
+        if(firstHour <= 9){
+            hourTV.text = getString(R.string.textContent, "0${firstHour}")
+        } else {
+            hourTV.text = firstHour.toString()
+        }
+        startBtn.text = "시작"
+        stop(timer, hourET, minuteET, secondET, startBtn, hourTV, minuteTV, secondTV, startBtn.rootView)
     }
 }
