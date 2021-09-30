@@ -164,7 +164,7 @@ class TimerActivity: AppCompatActivity() {
         })
     }
 
-    fun reflesh(v: View) {
+    fun refresh(v: View) {
         val hourET = timerBinding.hourET
         val minuteET = timerBinding.minuteET
         val secondET = timerBinding.secondET
@@ -224,7 +224,21 @@ class TimerActivity: AppCompatActivity() {
         } else {
             hourTV.text = firstHour.toString()
         }
+
+        hourET.setText(hourTV.text)
+        minuteET.setText(minuteTV.text)
+        secondET.setText(secondTV.text)
+
         startBtn.text = "시작"
         stop(timer, hourET, minuteET, secondET, startBtn, hourTV, minuteTV, secondTV, startBtn.rootView)
+
+        val timerCountSettingLayer =  timerBinding.timeCountSettingLV
+        val timerCountLayer =  timerBinding.timeCountLV
+        val timerOption = timerBinding.timerOption
+
+        timerCountSettingLayer.visibility = View.VISIBLE
+        timerCountLayer.visibility = View.GONE
+        timerOption.visibility = View.GONE
+
     }
 }
