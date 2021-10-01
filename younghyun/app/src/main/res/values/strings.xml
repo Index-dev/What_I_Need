@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Eumericano</string>
+    <string name="textContent">%s</string>
 </resources>

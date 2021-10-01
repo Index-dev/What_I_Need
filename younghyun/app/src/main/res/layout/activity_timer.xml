@@ -39,8 +39,9 @@
                 android:id="@+id/hourET"
                 android:layout_width="0dp"
                 android:layout_weight="1"
-                android:hint="00"
+                android:text="00"
                 android:textColorHint="@color/white"
+                android:textColor="@color/white"
                 android:gravity="center"
                 android:layout_height="wrap_content"
                 android:inputType="number"/>
@@ -62,8 +63,9 @@
                 android:id="@+id/minuteET"
                 android:layout_width="0dp"
                 android:layout_weight="1"
-                android:hint="05"
+                android:text="05"
                 android:textColorHint="@color/white"
+                android:textColor="@color/white"
                 android:gravity="center"
                 android:layout_height="wrap_content"
                 android:inputType="number"/>
@@ -85,8 +87,9 @@
                 android:id="@+id/secondET"
                 android:layout_width="0dp"
                 android:layout_weight="1"
-                android:hint="00"
+                android:text="00"
                 android:textColorHint="@color/white"
+                android:textColor="@color/white"
                 android:gravity="center"
                 android:layout_height="wrap_content"
                 android:inputType="number"/>
@@ -180,15 +183,45 @@
                 android:layout_marginRight="30dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                android:onClick="handleStart"/>
             <Button
                 android:id="@+id/completeBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="시작"
+                android:text="완료"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/timerOption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            >
+            <Button
+                android:id="@+id/resetBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="재설정"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginRight="30dp"
+                android:onClick="reset"
+                />
+            <Button
+                android:id="@+id/replayBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="새로고침"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:onClick="refresh"/>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
