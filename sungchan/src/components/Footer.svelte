@@ -58,7 +58,7 @@ $min-width: 730px;
                 class="click-image"
                 src="/images/github.png"
                 alt="github"
-                on:click={() => window.open('https://github.com')} />
+                on:click={() => window.open('https://github.com/Index-dev/What_I_Need/tree/sungchan/sungchan')} />
             <img
                 class="click-image"
                 src="/images/tistory.png"
