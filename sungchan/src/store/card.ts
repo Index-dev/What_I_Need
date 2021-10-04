@@ -16,6 +16,7 @@ interface Icard {
     type: string;
     title: string;
     description: string;
+    tags: string[];
     imagePath: string;
     color: string;
     translateX: number;
@@ -90,6 +91,7 @@ export const cardList = [
         type: 'card',
         title: 'FE',
         description: '프론트엔드 기술들을 확인할 수 있는 카드',
+        tags: ['FrontEnd'],
         imagePath: '/images/fe.svg',
         color: cardColor1,
         translateX: 0,
@@ -228,6 +230,7 @@ export const cardList = [
         type: 'card',
         title: '디자인',
         description: '다양한 디자인들을 확인할 수 있는 카드',
+        tags: ['Design'],
         imagePath: '/images/design.svg',
         color: cardColor2,
         translateX: 0,
@@ -340,6 +343,7 @@ export const cardList = [
         type: 'card',
         title: '색상',
         description: '색상 조합들을 찾을 수 있게 도와주는 카드',
+        tags: [],
         imagePath: '/images/color.svg',
         color: cardColor3,
         translateX: 0,
@@ -414,6 +418,7 @@ export const cardList = [
         type: 'card',
         title: 'SVG',
         description: 'SVG를 만들 수 있게 도와주는 카드',
+        tags: ['이미지', 'image'],
         imagePath: '/images/svg.svg',
         color: cardColor1,
         translateX: 0,
@@ -460,6 +465,7 @@ export const cardList = [
         type: 'card',
         title: 'CSS',
         description: '디테일한 CSS작업에 도움을 줄 수 있는 카드',
+        tags: [],
         imagePath: '/images/css.svg',
         color: cardColor2,
         translateX: 0,
@@ -528,6 +534,7 @@ export const cardList = [
         type: 'card',
         title: 'CD',
         description: '자동 배포를 도와주는 카드',
+        tags: [],
         imagePath: '/images/cd.svg',
         color: cardColor3,
         translateX: 0,
@@ -616,44 +623,60 @@ export const filterCardList = {
         tempCardList = tempCardList.filter((card) => {
             let isFilter = false;
 
-            if (card.title.toLocaleLowerCase().includes(text)) {
-                isFilter = true;
-            } else if (card.description.toLocaleLowerCase().includes(text)) {
-                isFilter = true;
-            } else {
-                const iconList = card.iconList;
-                iconList &&
-                    iconList.forEach((icon) => {
-                        if (isFilter) {
-                            return false;
-                        } else if (icon.title.toLocaleLowerCase().includes(text)) {
-                            isFilter = true;
-                            return false;
-                        } else {
-                            const infoList = icon.infoList;
-                            infoList &&
-                                infoList.forEach((info) => {
-                                    if (isFilter) {
-                                        return false;
-                                    } else if (info.title.toLocaleLowerCase().includes(text)) {
-                                        isFilter = true;
-                                        return false;
-                                    } else {
-                                        const contentList = info.contentList;
-                                        contentList &&
-                                            contentList.forEach((content) => {
-                                                if (content.title.toLocaleLowerCase().includes(text)) {
-                                                    isFilter = true;
-                                                    return false;
-                                                } else if (content.content.toLocaleLowerCase().includes(text)) {
-                                                    isFilter = true;
-                                                    return false;
-                                                }
-                                            });
-                                    }
-                                });
-                        }
-                    });
+            // 태그 검색
+            card.tags.forEach((tag) => {
+                if (tag.toLocaleLowerCase().includes(text)) {
+                    isFilter = true;
+                    return false;
+                }
+            });
+
+            if (!isFilter) {
+                if (card.title.toLocaleLowerCase().includes(text)) {
+                    // 타이틀 검색
+                    isFilter = true;
+                } else if (card.description.toLocaleLowerCase().includes(text)) {
+                    // 설명 검색
+                    isFilter = true;
+                } else {
+                    const iconList = card.iconList;
+                    iconList &&
+                        iconList.forEach((icon) => {
+                            if (isFilter) {
+                                return false;
+                            } else if (icon.title.toLocaleLowerCase().includes(text)) {
+                                // 아이콘 타이틀 검색
+                                isFilter = true;
+                                return false;
+                            } else {
+                                const infoList = icon.infoList;
+                                infoList &&
+                                    infoList.forEach((info) => {
+                                        if (isFilter) {
+                                            return false;
+                                        } else if (info.title.toLocaleLowerCase().includes(text)) {
+                                            // 세부정보 타이틀 검색
+                                            isFilter = true;
+                                            return false;
+                                        } else {
+                                            const contentList = info.contentList;
+                                            contentList &&
+                                                contentList.forEach((content) => {
+                                                    if (content.title.toLocaleLowerCase().includes(text)) {
+                                                        // 콘텐츠 타이틀 검색
+                                                        isFilter = true;
+                                                        return false;
+                                                    } else if (content.content.toLocaleLowerCase().includes(text)) {
+                                                        // 콘텐츠 내용 검색
+                                                        isFilter = true;
+                                                        return false;
+                                                    }
+                                                });
+                                        }
+                                    });
+                            }
+                        });
+                }
             }
 
             return isFilter;
@@ -675,6 +698,7 @@ export const filterCardList = {
                     type: 'blank',
                     title: '',
                     description: '',
+                    tags: [],
                     imagePath: '',
                     color: '',
                     translateX: 0,
