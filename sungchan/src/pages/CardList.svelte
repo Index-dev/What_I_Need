@@ -18,6 +18,9 @@ import { backgroundColorStyle, colorStyle } from '~/store/header';
 import Icons from '~/components/Icons.svelte';
 import { touchSlide } from '~/actions/slide';
 import { iconId } from '../store/card';
+import App from '../App.svelte';
+import Card from '../components/Card.svelte';
+import Footer from '../components/Footer.svelte';
 
 let cardListEl;
 let cardIndex = 0;
@@ -124,8 +127,8 @@ const nodeTouchEnd = () => {
         bind:this={cardListEl}
         use:touchSlide={nodeTouchEnd}
         on:nodeTouchMove={nodeTouchMove}
-        style="width: {baseWidthClientWidth * cardList.length}px; margin-left:-{baseWidthClientWidth * cardIndex +
-            touchGab}px">
+        style="width: {baseWidthClientWidth * cardList.length}px; 
+               margin-left:-{baseWidthClientWidth * cardIndex + touchGab}px">
         {#each cardList as card (card.id)}
             <Icons {card} {baseWidthClientWidth} />
         {/each}

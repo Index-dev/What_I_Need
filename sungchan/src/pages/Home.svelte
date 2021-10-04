@@ -51,6 +51,7 @@ import { onDestroy, onMount, tick } from 'svelte';
 import { backgroundColorStyle, colorStyle } from '~/store/header';
 import Card from '~/components/Card.svelte';
 import { filterCardList } from '~/store/card';
+import Footer from '~/components/Footer.svelte';
 
 let cardBoardEl;
 let searchText = '';
@@ -92,3 +93,5 @@ $: searchText, filterCardList.filter(searchText);
         {/each}
     </div>
 </div>
+
+<Footer />
