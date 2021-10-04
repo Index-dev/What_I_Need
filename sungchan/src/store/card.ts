@@ -343,7 +343,7 @@ export const cardList = [
         type: 'card',
         title: '색상',
         description: '색상 조합들을 찾을 수 있게 도와주는 카드',
-        tags: [],
+        tags: ['색깔'],
         imagePath: '/images/color.svg',
         color: cardColor3,
         translateX: 0,
