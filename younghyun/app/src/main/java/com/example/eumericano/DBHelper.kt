@@ -13,7 +13,7 @@ class MainDBHelper(
 
     override fun onCreate(db: SQLiteDatabase) {
         var sql : String = "CREATE TABLE if not exists TURNED_ON_APP ( " +
-                "date date primary key, " +
+                "date varchar(255) primary key, " +
                 "idx int auto_increment, " +
                 "describe varchar(255) );";
 
