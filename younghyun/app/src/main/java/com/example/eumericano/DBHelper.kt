@@ -12,12 +12,20 @@ class MainDBHelper(
     ) : SQLiteOpenHelper(context, name, factory, version) {
 
     override fun onCreate(db: SQLiteDatabase) {
-        var sql : String = "CREATE TABLE if not exists TURNED_ON_APP ( " +
+        var mainSql : String = "CREATE TABLE if not exists TURNED_ON_APP ( " +
                 "date varchar(255) primary key, " +
                 "idx int auto_increment, " +
                 "describe varchar(255) );";
 
-        db.execSQL(sql)
+        db.execSQL(mainSql)
+
+        var checkSql : String = "CREATE TABLE if not exists CHECK_TODO ( " +
+                "date date, " +
+                "btn_num number, " +
+                "time date, " +
+                "FOREIGN KEY ('date') REFERENCES TURNED_ON_APP );";
+
+        db.execSQL(checkSql)
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
@@ -28,28 +36,3 @@ class MainDBHelper(
     }
 }
 
-
-class CheckDBHelper(
-    context: Context?,
-    name: String?,
-    factory: SQLiteDatabase.CursorFactory?,
-    version: Int
-) : SQLiteOpenHelper(context, name, factory, version) {
-
-    override fun onCreate(db: SQLiteDatabase) {
-        var sql : String = "CREATE TABLE if not exists CHECK_TODO ( " +
-                "date date, " +
-                "btn_num number, " +
-                "time date, " +
-                "FOREIGN KEY ('date') REFERENCES TURNED_ON_APP );";
-
-        db.execSQL(sql)
-    }
-
-    override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
-        val sql : String = "DROP TABLE if exists CHECK_TODO"
-
-        db.execSQL(sql)
-        onCreate(db)
-    }
-}

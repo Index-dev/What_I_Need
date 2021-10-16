@@ -7,7 +7,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import com.example.eumericano.databinding.ActivityMainBinding
-import layout.CheckDBHelper
 import layout.MainDBHelper
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
@@ -20,19 +19,15 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        lateinit var mainDBHelper : MainDBHelper
-        lateinit var mainDatabase : SQLiteDatabase
-        lateinit var checkDBHelper : CheckDBHelper
-        lateinit var checkDatabase : SQLiteDatabase
+        lateinit var DBHelper : MainDBHelper
+        lateinit var Database : SQLiteDatabase
 
 
         mBinding= ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        mainDBHelper =  MainDBHelper(this, "TURN_ON_APP.db", null, 1)
-        mainDatabase = mainDBHelper.writableDatabase
-        checkDBHelper =  CheckDBHelper(this, "TURN_ON_APP.db", null, 1)
-        checkDatabase = checkDBHelper.writableDatabase
+        DBHelper =  MainDBHelper(this, "TURN_ON_APP.db", null, 1)
+        Database = DBHelper.writableDatabase
 
         val current = LocalDateTime.now()
         val formatter = DateTimeFormatter.ISO_DATE
@@ -41,7 +36,7 @@ class MainActivity : AppCompatActivity() {
         var contentValues = ContentValues()
         contentValues.put("date",formatted)
 
-        mainDatabase.insert("TURNED_ON_APP", null, contentValues)
+        Database.insert("TURNED_ON_APP", null, contentValues)
     }
 
     fun showTimer(v: View) {
