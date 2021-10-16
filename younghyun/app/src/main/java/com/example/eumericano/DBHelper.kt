@@ -12,10 +12,10 @@ class MainDBHelper(
     ) : SQLiteOpenHelper(context, name, factory, version) {
 
     override fun onCreate(db: SQLiteDatabase) {
-        var sql : String = "CREATE TABLE if not exists TURNED_ON_APP (" +
-                "date date primary key," +
-                "index number autoincrement," +
-                "describe text);";
+        var sql : String = "CREATE TABLE if not exists TURNED_ON_APP ( " +
+                "date date primary key, " +
+                "idx int auto_increment, " +
+                "describe varchar(255) );";
 
         db.execSQL(sql)
     }
@@ -29,7 +29,7 @@ class MainDBHelper(
 }
 
 
-class TimeDBHelper(
+class CheckDBHelper(
     context: Context?,
     name: String?,
     factory: SQLiteDatabase.CursorFactory?,
@@ -37,11 +37,11 @@ class TimeDBHelper(
 ) : SQLiteOpenHelper(context, name, factory, version) {
 
     override fun onCreate(db: SQLiteDatabase) {
-        var sql : String = "CREATE TABLE if not exists CHECK_TODO (" +
-                "date date," +
-                "btn_num number," +
-                "time date," +
-                "FOREIGN KEY ('date') REFERENCES TURNED_ON_APP);";
+        var sql : String = "CREATE TABLE if not exists CHECK_TODO ( " +
+                "date date, " +
+                "btn_num number, " +
+                "time date, " +
+                "FOREIGN KEY ('date') REFERENCES TURNED_ON_APP );";
 
         db.execSQL(sql)
     }
