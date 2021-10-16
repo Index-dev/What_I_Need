@@ -36,3 +36,22 @@ class MainDBHelper(
     }
 }
 
+
+class CheckDBHelper(
+    context: Context?,
+    name: String?,
+    factory: SQLiteDatabase.CursorFactory?,
+    version: Int
+) : SQLiteOpenHelper(context, name, factory, version) {
+
+    override fun onCreate(db: SQLiteDatabase) {
+
+    }
+
+    override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
+        val sql : String = "DROP TABLE if exists CHECK_TODO"
+
+        db.execSQL(sql)
+        onCreate(db)
+    }
+}
