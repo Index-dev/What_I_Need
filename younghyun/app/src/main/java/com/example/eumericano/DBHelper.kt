@@ -21,7 +21,7 @@ class MainDBHelper(
 
         var checkSql : String = "CREATE TABLE if not exists CHECK_TODO ( " +
                 "date date, " +
-                "btn_num number, " +
+                "btn_name varchar(255), " +
                 "time date, " +
                 "FOREIGN KEY ('date') REFERENCES TURNED_ON_APP );";
 
