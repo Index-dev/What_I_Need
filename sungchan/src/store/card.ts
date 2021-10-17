@@ -527,6 +527,33 @@ export const cardList = [
                     },
                 ],
             },
+            {
+                id: encrypt(),
+                title: 'CanIuse',
+                imagePath: '/images/caniuse.png',
+                infoList: [
+                    {
+                        title: '기본 정보',
+                        contentList: [
+                            {
+                                type: 'text',
+                                title: '이름',
+                                content: '캔아이유즈 (CanIuse)',
+                            },
+                            {
+                                type: 'link',
+                                title: '공식 사이트',
+                                content: 'https://caniuse.com',
+                            },
+                            {
+                                type: 'text',
+                                title: '간단 소개',
+                                content: '여러 브라우저에서 사용될 수 있는 HTML, CSS 등을 확인할 수 있는 사이트',
+                            },
+                        ],
+                    },
+                ],
+            },
         ],
     },
     {
