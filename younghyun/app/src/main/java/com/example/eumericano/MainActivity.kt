@@ -1,5 +1,6 @@
 package com.example.eumericano
 
+import android.annotation.SuppressLint
 import android.content.ContentValues
 import android.content.Intent
 import android.database.sqlite.SQLiteDatabase
@@ -18,6 +19,7 @@ class MainActivity : AppCompatActivity() {
     private val binding get() = mBinding!!
 
 
+    @SuppressLint("Range")
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,6 +41,11 @@ class MainActivity : AppCompatActivity() {
         contentValues.put("date",formatted)
 
         Database.insert("TURNED_ON_APP", null, contentValues)
+
+        var getDateInfoQuery = "SELECT * FROM CHECK_TODO " +
+                "WHERE DATE="+formatted
+        var dailyRoutine = Database.rawQuery(getDateInfoQuery, null)
+
     }
 
     fun showTimer(v: View) {
