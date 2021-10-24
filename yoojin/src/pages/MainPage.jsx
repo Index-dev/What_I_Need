@@ -1,16 +1,23 @@
 import React from "react";
 import styled from "styled-components";
-import ScheduleList from "../components/ScheduleList";
+import ProgressShortCuts from "../components/ProgressShortCuts";
+import { NavLink } from "react-router-dom";
 
 const Main = () => {
+  const moveToDetailPage = () => {};
   return (
     <MainText>
       <ContentTop>
-        <div>title</div>
-        <div>button</div>
+        <div>..ing</div>
+        <div onClick={moveToDetailPage}>
+          <NavLink exact to="/list">
+            📋
+          </NavLink>
+        </div>
       </ContentTop>
       <Content>
-        <ScheduleList />
+        {/* <ProgressList /> */}
+        <ProgressShortCuts />
       </Content>
     </MainText>
   );
@@ -38,5 +45,30 @@ const ContentTop = styled.div`
   background: ${props => props.theme.subTopkColor};
   height: 10%;
   width: 90%;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: white;
+  & > div:nth-child(1) {
+    width: 90%;
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  & > div:nth-child(2) {
+    width: 10%;
+    height: 50%;
+    margin: 0.5em;
+    background-color: #cccccc4d;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.5em;
+  }
+
+  & > div:nth-child(2):hover {
+    background-color: #0c0c4687;
+  }
 `;
 export default Main;
