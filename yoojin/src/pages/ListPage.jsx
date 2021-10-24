@@ -5,11 +5,10 @@ import { NavLink } from "react-router-dom";
 const List = () => {
   return (
     <Content>
-      <Home>
-        <NavLink exact to="/">
-          🏠
-        </NavLink>
-      </Home>
+      <NavLink exact to="/">
+        <Home>🏠</Home>
+      </NavLink>
+
       <ProgressList />
     </Content>
   );
@@ -27,6 +26,14 @@ const Home = styled.div`
   height: 8vh;
   display: flex;
   align-items: center;
+  width: 10vh;
+  justify-content: center;
+  margin: 1vh;
+  border-radius: 2vh;
+  :hover {
+    cursor: pointer;
+    background-color: #005f99d4;
+  }
 `;
 
 export default List;

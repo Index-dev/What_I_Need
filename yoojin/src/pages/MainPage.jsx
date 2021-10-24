@@ -4,12 +4,11 @@ import ProgressShortCuts from "../components/ProgressShortCuts";
 import { NavLink } from "react-router-dom";
 
 const Main = () => {
-  const moveToDetailPage = () => {};
   return (
     <MainText>
       <ContentTop>
         <div>..ing</div>
-        <div onClick={moveToDetailPage}>
+        <div>
           <NavLink exact to="/list">
             📋
           </NavLink>
